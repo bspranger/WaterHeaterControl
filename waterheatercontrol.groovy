@@ -30,7 +30,7 @@ def main()
 		}
 		section("Settings") 
 		{
-				input "thermostatDevices", "capability.thermostat", title: "Thermostat Devices", multiple: false, required: true
+				input "thermostatDevice", "capability.thermostat", title: "Thermostat Devices", multiple: false, required: true
 				input "Wake", "time", title: "Time to start Wake", required: true
 				input "WakeTemp", "number", required: true, title: "Wake Temperature"
 				input "Leave", "time", title: "Time to start Leave", required: true
@@ -72,7 +72,7 @@ def wakeTemp()
 		currentTemp = thermostatDevice.currentValue("heatingSetpoint")
 		currentMode = thermostatDevice.currentValue("thermostatMode") 
 		if (logEnable) 
-			log.debug "Thermostat: thermostatDevice Temp: $currentTemp Mode: $currentMode"
+			log.debug "Thermostat: $thermostatDevice Temp: $currentTemp Mode: $currentMode"
 		if (currentTemp != WakeTemp)
 			thermostatDevice.setHeatingSetpoint(WakeTemp)
 	}
@@ -85,7 +85,7 @@ def leaveTemp()
 		currentTemp = thermostatDevice.currentValue("heatingSetpoint")
 		currentMode = thermostatDevice.currentValue("thermostatMode") 
 		if (logEnable) 
-			log.debug "Thermostat: thermostatDevice Temp: $currentTemp Mode: $currentMode"
+			log.debug "Thermostat: $thermostatDevice Temp: $currentTemp Mode: $currentMode"
 		if (currentTemp != LeaveTemp)
 			thermostatDevice.setHeatingSetpoint(LeaveTemp)
 	}
@@ -98,7 +98,7 @@ def returnTemp()
 		currentTemp = thermostatDevice.currentValue("heatingSetpoint")
 		currentMode = thermostatDevice.currentValue("thermostatMode") 
 		if (logEnable) 
-			log.debug "Thermostat: thermostatDevice Temp: $currentTemp Mode: $currentMode"
+			log.debug "Thermostat: $thermostatDevice Temp: $currentTemp Mode: $currentMode"
 		if (currentTemp != ReturnTemp)
 			thermostatDevice.setHeatingSetpoint(ReturnTemp)
 	}
@@ -111,7 +111,7 @@ def sleepTemp()
 		currentTemp = thermostatDevice.currentValue("heatingSetpoint")
 		currentMode = thermostatDevice.currentValue("thermostatMode") 
 		if (logEnable) 
-			log.debug "Thermostat: thermostatDevice Temp: $currentTemp Mode: $currentMode"
+			log.debug "Thermostat: $thermostatDevice Temp: $currentTemp Mode: $currentMode"
 		if (currentTemp != SleepTemp)
 			thermostatDevice.setHeatingSetpoint(SleepTemp)
 	}
