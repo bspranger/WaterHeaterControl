@@ -1,3 +1,10 @@
+/*************************************************************************************************
+*
+*  Git Hub Raw Link
+*  https://raw.githubusercontent.com/bspranger/WaterHeaterControl/master/waterheatercontrol.groovy
+*
+**************************************************************************************************/
+
 definition(
 	name: "Water Heater Control",
 	namespace: "bspranger",
