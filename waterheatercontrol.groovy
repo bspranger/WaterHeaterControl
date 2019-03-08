@@ -30,17 +30,16 @@ def main()
 		}
 		section("Settings") 
 		{
-				input "thermostatDevice", "capability.thermostat", title: "Thermostat Devices", multiple: false, required: true
-				input "Wake", "time", title: "Time to start Wake", required: true
-				input "WakeTemp", "number", required: true, title: "Wake Temperature"
-				input "Leave", "time", title: "Time to start Leave", required: true
-				input "LeaveTemp", "number", required: true, title: "Leave Temperature"
-				input "Return", "time", title: "Time to start Return", required: true
-				input "ReturnTemp", "number", required: true, title: "Return Temperature"
-				input "Sleep", "time", title: "Time to start Sleep", required: true
-				input "SleepTemp", "number", required: true, title: "Sleep Temperature"
-				input "logEnable", "bool", title: "Enable debug logging", required: false
-				input "mode1", "capability.locationMode", title: "Select a Mode"
+			input "thermostatDevice", "capability.thermostat", title: "Thermostat Devices", multiple: false, required: true
+			input "Wake", "time", title: "Time to start Wake", required: true
+			input "WakeTemp", "number", required: true, title: "Wake Temperature"
+			input "Leave", "time", title: "Time to start Leave", required: true
+			input "LeaveTemp", "number", required: true, title: "Leave Temperature"
+			input "Return", "time", title: "Time to start Return", required: true
+			input "ReturnTemp", "number", required: true, title: "Return Temperature"
+			input "Sleep", "time", title: "Time to start Sleep", required: true
+			input "SleepTemp", "number", required: true, title: "Sleep Temperature"
+			input "logEnable", "bool", title: "Enable debug logging", required: false
 		}
 	}
 }
