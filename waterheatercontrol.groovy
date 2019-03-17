@@ -71,9 +71,9 @@ def wakeTemp()
 		currentTemp = thermostatDevice.currentValue("heatingSetpoint")
 		currentMode = thermostatDevice.currentValue("thermostatMode") 
 		if (logEnable) 
-			log.debug "Thermostat: $thermostatDevice Temp: $currentTemp Mode: $currentMode"
-		if (currentTemp != WakeTemp)
-			thermostatDevice.setHeatingSetpoint(WakeTemp)
+			log.debug "Thermostat: $thermostatDevice Temp: $currentTemp Mode: $currentMode, setting to Temp: $WakeTemp"
+		
+		thermostatDevice.setHeatingSetpoint(WakeTemp)
 	}
 }
 
@@ -84,9 +84,9 @@ def leaveTemp()
 		currentTemp = thermostatDevice.currentValue("heatingSetpoint")
 		currentMode = thermostatDevice.currentValue("thermostatMode") 
 		if (logEnable) 
-			log.debug "Thermostat: $thermostatDevice Temp: $currentTemp Mode: $currentMode"
-		if (currentTemp != LeaveTemp)
-			thermostatDevice.setHeatingSetpoint(LeaveTemp)
+			log.debug "Thermostat: $thermostatDevice Temp: $currentTemp Mode: $currentMode, setting to Temp: $LeaveTemp"
+		
+		thermostatDevice.setHeatingSetpoint(LeaveTemp)
 	}
 }
 
@@ -97,9 +97,9 @@ def returnTemp()
 		currentTemp = thermostatDevice.currentValue("heatingSetpoint")
 		currentMode = thermostatDevice.currentValue("thermostatMode") 
 		if (logEnable) 
-			log.debug "Thermostat: $thermostatDevice Temp: $currentTemp Mode: $currentMode"
-		if (currentTemp != ReturnTemp)
-			thermostatDevice.setHeatingSetpoint(ReturnTemp)
+			log.debug "Thermostat: $thermostatDevice Temp: $currentTemp Mode: $currentMode, setting to Temp: $ReturnTemp"
+		
+		thermostatDevice.setHeatingSetpoint(ReturnTemp)
 	}
 }
 
@@ -110,9 +110,9 @@ def sleepTemp()
 		currentTemp = thermostatDevice.currentValue("heatingSetpoint")
 		currentMode = thermostatDevice.currentValue("thermostatMode") 
 		if (logEnable) 
-			log.debug "Thermostat: $thermostatDevice Temp: $currentTemp Mode: $currentMode"
-		if (currentTemp != SleepTemp)
-			thermostatDevice.setHeatingSetpoint(SleepTemp)
+			log.debug "Thermostat: $thermostatDevice Temp: $currentTemp Mode: $currentMode, setting to Temp: $SleepTemp"
+		
+		thermostatDevice.setHeatingSetpoint(SleepTemp)
 	}
 }
 
@@ -131,13 +131,19 @@ def modeEvent(evt){
 		
 		if ((evt.value == "Day") || (evt.value == "Babysitter"))
 		{
-			if (currentMode != "Heat Pump Only")
-				thermostatDevice.RequestHeatPumpOnly()
+		    thermostatDevice.heat()
+			if (logEnable)
+			{
+				log.debug "Setting Thermostat: $thermostatDevice, to On"
+			}
 		}
 		else if ((evt.value == "Night") || (evt.value == "Away"))
 		{
-			if (currentMode != "Off")
-				thermostatDevice.RequestOff()
+			thermostatDevice.off()
+			if (logEnable)
+			{
+				log.debug "Setting Thermostat: $thermostatDevice, to Off"
+			}
 		}
 		else
 		{
